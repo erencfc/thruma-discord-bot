@@ -1,0 +1,21 @@
+{
+    "name": "thruma",
+    "version": "1.0.0",
+    "description": "Thruma Discord Bot",
+    "main": "index.js",
+    "scripts": {
+        "start": "node ./src/index.js",
+        "dev": "nodemon ./src/index.js --ignore config/",
+        "server": "pm2 start index.js --name thruma"
+    },
+    "repository": "https://github.com/erencfc/thruma-discord-bot",
+    "license": "MIT",
+    "dependencies": {
+        "discord.js": "^14.6.0",
+        "dotenv": "^16.0.3",
+        "mongoose": "^6.6.5"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.20"
+    }
+}
