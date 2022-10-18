@@ -2,8 +2,7 @@ const Discord = require("discord.js");
 
 /**
  * @param {Discord.Client} client
- * @param {Discord.Message} message
- * @param {Array<String>} args
+ * @param {Discord.MessageInteraction} interaction
  */
 
 exports.run = async function (client, interaction) {
