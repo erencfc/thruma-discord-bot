@@ -42,31 +42,29 @@ exports.run = async function (client, interaction) {
     }
 
     const embed = new Discord.EmbedBuilder()
-        .setDescription(`${member.user.tag} (${member.id})`)
-        .setTitle(`${member.displayName}`)
+        .setDescription(`${member} (${member.user.tag}) (${member.id})`)
         .setFields(
             {
-                name: "Hesap Oluşturma Tarihi",
+                name: "User Created At",
                 value: member.user.createdAt.toLocaleString(),
             },
             {
-                name: "Sunucuya Katılma Tarihi",
+                name: "User Joined At",
                 value: member.joinedAt.toLocaleString(),
             },
             {
-                name: "Sunucudaki Üye Sırası",
+                name: "Guild Join Position",
                 value: `${joinPosition + 1} / ${members.size}`,
             },
             {
-                name: "Yetkiler",
+                name: "Permissions",
                 value: permissions,
             },
             {
-                name: "Roller",
+                name: "Roles",
                 value: roles,
             }
-        )
-        .setFooter({ text: `ID: ${member.id}` });
+        );
 
     interaction.reply({ embeds: [embed] });
 };
