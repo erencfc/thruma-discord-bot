@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 /**
  * @param {Discord.Client} client
  * @param {Discord.Message} message
- *@param {Array<String>} args
+ * @param {Array<String>} args
  */
 
 exports.run = async function (client, interaction) {
@@ -36,7 +36,7 @@ exports.settings = {
 
 exports.help = {
     name: "ping",
-    description: "Ping",
+    description: "Test the latency.",
     usage: "ping",
     category: __dirname.slice(__dirname.lastIndexOf("\\") + 1),
 };
