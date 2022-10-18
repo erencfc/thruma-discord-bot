@@ -22,9 +22,30 @@ module.exports = async (client, interaction) => {
 
     if (!cmd) return;
 
-    let perm = cmd.props.settings.perm;
+    let settings = cmd.props.settings;
+    let perm = settings.perm;
 
     if (interaction.user.id !== ownerID) {
+        // Command Status Control
+        if (!settings.enabled)
+            return interaction.reply({
+                embeds: [
+                    embed.setDescription(
+                        `**This command is currently disabled.**`
+                    ),
+                ],
+            });
+
+        // Only Owner Control
+        if (settings.onlyOwner)
+            return interaction.reply({
+                embeds: [
+                    embed.setDescription(
+                        `**This command is available only to the bot owner.**`
+                    ),
+                ],
+            });
+
         // Permission Control
         if (perm && !interaction.memberPermissions.has(perm))
             return interaction.reply({
