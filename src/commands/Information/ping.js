@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 /**
  * @param {Discord.Client} client
- * @param {Discord.MessageInteraction} interaction
+ * @param {Discord.Interaction} interaction
  */
 
 exports.run = async function (client, interaction) {
@@ -39,3 +39,7 @@ exports.help = {
     usage: "ping",
     category: __dirname.slice(__dirname.lastIndexOf("\\") + 1),
 };
+
+exports.data = new Discord.SlashCommandBuilder()
+    .setName(this.help.name)
+    .setDescription(this.help.description);

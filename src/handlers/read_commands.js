@@ -15,13 +15,11 @@ module.exports = (client) => {
             for (let file of commands) {
                 let props = require(`../commands/${dir}/${file}`);
 
-                if (!props.run || !props.settings) {
+                if (!props.run || !props.settings || !props.data) {
                     table.addRow(file, `✘`);
                     continue;
                 } else {
-                    const body = new SlashCommandBuilder()
-                        .setName(props.help.name)
-                        .setDescription(props.help.description);
+                    const body = props.data;
                     client.commands.set(props.help.name, { props, body });
                     table.addRow(file, "✔");
                 }
