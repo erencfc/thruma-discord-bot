@@ -11,8 +11,10 @@
     "repository": "https://github.com/erencfc/thruma-discord-bot",
     "license": "MIT",
     "dependencies": {
+        "ascii-table": "^0.0.9",
         "discord.js": "^14.6.0",
         "dotenv": "^16.0.3",
+        "fs": "^0.0.1-security",
         "mongoose": "^6.6.5"
     },
     "devDependencies": {

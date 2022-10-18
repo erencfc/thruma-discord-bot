@@ -1,17 +1,22 @@
-const { Client, GatewayIntentBits, ActivityType } = require("discord.js");
+const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const mongoose = require("mongoose");
+const { readdir, readdirSync } = require("fs");
+
 require("dotenv").config();
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-client.once("ready", (c) => {
-    c.user.setPresence({
-        status: "idle",
-        activities: [
-            { name: "Still on development!", type: ActivityType.Competing },
-        ],
+client.commands = new Collection();
+client.aliases = new Collection();
+client.emoji = (emoji) => {
+    return client.emojis.cache.find((e) => e.name == emoji);
+};
+
+readdir("./src/handlers", (_, files) => {
+    files.map((file) => {
+        let handler = file.split(".")[0];
+        require(`./handlers/${handler}`)(client);
     });
-    console.log(`${c.user.tag} is online!`);
 });
 
 (async function () {
